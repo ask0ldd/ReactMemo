@@ -8,7 +8,7 @@ export interface IEmployee{
 
 export function EmployeeCard({item, index} : IRendererProps<IEmployee>){ // defined item type passed to the renderer (this card)
     return(
-        <article className="flex flex-col border-1 border-[#dfdfdf] min-w-[300px] p-[20px] rounded-md shadow-gray-200 shadow-md">
+        <article className="flex flex-col min-w-[300px] p-[20px] rounded-md shadow-gray-200 shadow-md bg-gray-50 hover:cursor-pointer">
             <span>{index}</span>
             <span>{item.lastname}</span>
             <span>{item.firstname}</span>
