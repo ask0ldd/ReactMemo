@@ -1,9 +1,9 @@
 import { Suspense, useEffect, useRef } from 'react'
 import './App.css'
 import { useServices } from './context/useServices'
-import { EmployeeCard } from './pagination/EmployeeCard'
-import { employees } from './pagination/constants/Employees'
-import Paginable from './pagination/Paginable'
+import { EmployeeCard } from './pagination-generics/EmployeeCard'
+import { employees } from './pagination-generics/constants/Employees'
+import Paginable from './pagination-generics/Paginable'
 import Component from './fetch-withSuspense/Component'
 import { ErrorBoundary } from 'react-error-boundary'
 
@@ -22,7 +22,7 @@ function App() {
 
     return (
         <>
-            <Paginable items={employees} Renderer={EmployeeCard} perPage={4} className='flex flex-row gap-x-[10px]'/>
+            <Paginable items={employees} Renderer={EmployeeCard} perPage={4} className='flex flex-col justify-center items-center gap-y-[20px]'/>
             <ErrorBoundary fallback={<div>Error!</div>}>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Component/>
