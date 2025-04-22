@@ -37,7 +37,7 @@ export default function Paginable<T>({items, Renderer, className, perPage} : IPa
                     <ol className="flex flex-row gap-x-[5px]">
                         {pages.map(page => (
                             <li key={page}>
-                                <button className={'shadow-gray-300 shadow-xl bg-gray-50 hover:cursor-pointer px-[12px] py-[5px] rounded-[4px] ' + (page == currentPage ? 'bg-fuchsia-400' : '')} onClick={() => setCurrentPage(page)}>{page + 1}</button>
+                                <button className={'shadow-gray-300 shadow-xl hover:cursor-pointer px-[12px] py-[5px] rounded-[4px]' + (page == currentPage ? ' bg-blue-400 text-[#ffffff] border-1 border-blue-500' : ' bg-gray-50')} onClick={() => setCurrentPage(page)}>{page + 1}</button>
                             </li>
                         ))}
                     </ol>
