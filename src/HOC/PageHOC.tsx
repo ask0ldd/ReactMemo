@@ -1,7 +1,7 @@
 import { PostList } from "./PostList";
 import { withDataFetch } from "./withFetchData";
 
-export function Page(){
+export function PageHOC(){
     
     const fetchPosts = () => fetch('/api/posts').then(res => res.json())
 
