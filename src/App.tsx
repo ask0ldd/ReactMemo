@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import './App.css'
 import { useServices } from './context/useServices'
 import { EmployeeCard } from './pagination-generics/EmployeeCard'
@@ -6,12 +6,14 @@ import { employees } from './pagination-generics/constants/Employees'
 import Paginable from './pagination-generics/Paginable'
 import Component from './fetch-withSuspense/Component'
 import { ErrorBoundary } from 'react-error-boundary'
+import { LazyLoadedDialog } from './lazyLoading/LazyLoadedDialog'
 
 function App() {
 
     const {service1, service2} = useServices()
 
     const firstRender = useRef<boolean>(true)
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     useEffect(() => {
         if(firstRender.current == false) return
@@ -28,6 +30,11 @@ function App() {
                     <Component/>
                 </Suspense>
             </ErrorBoundary>
+            {isDialogOpen && (
+                <Suspense fallback={<div>Loading Dialog...</div>}>
+                    <LazyLoadedDialog onClose={() => setIsDialogOpen(false)} />
+                </Suspense>
+            )}
         </>
     )
 }
