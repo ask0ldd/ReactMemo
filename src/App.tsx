@@ -7,6 +7,8 @@ import Paginable from './pagination-generics/Paginable'
 import Component from './fetch-withSuspense/Component'
 import { ErrorBoundary } from 'react-error-boundary'
 import { LazyLoadedDialog } from './lazyLoading/LazyLoadedDialog'
+import TanstackQuery from './tanstack-query/TanstackQuery'
+import TQDataProvider from './tanstack-query/TQDataProvider'
 
 function App() {
 
@@ -23,7 +25,7 @@ function App() {
     }, [])
 
     return (
-        <>
+        <TQDataProvider>
             <Paginable items={employees} Renderer={EmployeeCard} perPage={4} className='flex flex-col justify-center items-center gap-y-[20px]'/>
             <ErrorBoundary fallback={<div>Error!</div>}>
                 <Suspense fallback={<div>Loading...</div>}>
@@ -31,11 +33,13 @@ function App() {
                 </Suspense>
             </ErrorBoundary>
             {isDialogOpen && (
-                <Suspense fallback={<div>Loading Dialog...</div>}>
+                <Suspense fallback={<dialog open>Loading Dialog...</dialog>}>
                     <LazyLoadedDialog onClose={() => setIsDialogOpen(false)} />
                 </Suspense>
             )}
-        </>
+            
+                <TanstackQuery/>
+        </TQDataProvider>
     )
 }
 
