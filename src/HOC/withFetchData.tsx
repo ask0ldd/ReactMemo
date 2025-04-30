@@ -6,6 +6,8 @@ interface InjectedFetchProps<T> {
     error: Error | null
 }
 
+// function taking a component + fetchData logic and combining both into a new component
+// very similar to custom hook
 export function withDataFetch<GWComponentProps, GData>(
     // React.ComponentType<P> means "a React component that accepts props of type P"
     WrappedComponent : ComponentType<GWComponentProps & InjectedFetchProps<GData>>, 
